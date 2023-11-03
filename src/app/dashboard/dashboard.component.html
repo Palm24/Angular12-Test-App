@@ -1,0 +1,57 @@
+<main>
+    <header>
+        <div class="p-2 border border-buttom-2 ">
+            <ul class="nav justify-content-end mx-4">
+                <li class="nav-item">
+                  <a class="nav-link active text-reset" aria-current="page">
+                    Time in Thainland: {{currentDate | date:'h:mm (z)'}} | Date: {{currentDate | date:'d  MMMM  y'}}
+                </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-reset" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Lorem CoLtd.
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section class="mx-5 ps-5 pe-5">
+        <div class="container padding-card">
+            <div class="text-center my-4">
+                <h1>Submit Tax Filing</h1>
+            </div>
+            <mat-stepper class="example-stepper"
+                [orientation]="(stepperOrientation | async)!" [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup" label="Input Detail" >
+                    <form [formGroup]="firstFormGroup">
+                    <div class="p-10">
+                        <app-input-detail (isErrors)="reciveItem($event)" (model)="modelData($event)"></app-input-detail>
+                    </div>
+                    <div class="d-flex gap-3 mx-auto text-center mt-4">
+                        <button class="rounded-pill ps-4 pe-4" mat-raised-button matStepperPrevious>Back</button>
+                        <button class="rounded-pill ps-4 pe-4" color="primary" mat-raised-button matStepperNext [disabled]="isErrors == true">Next</button>
+                    </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Review and Confirm</ng-template>
+                    <div class="p-10">
+                        <app-review-confirm [modelItemsDetail]="test"></app-review-confirm> 
+                    </div>
+                    <div class="mx-auto text-center mt-4">
+                        <button class="rounded-pill ps-4 pe-4" color="primary" mat-raised-button>Confirm and Submit</button>
+                    </div>
+                    </form>
+                </mat-step>
+            </mat-stepper>
+        </div>
+    </section>
+</main>
+
+<div class="p-3"></div>

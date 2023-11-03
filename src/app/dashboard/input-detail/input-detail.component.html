@@ -1,0 +1,144 @@
+<div class="card">
+    <div class="card-body">
+        <div class="container my-4">
+            <div class="text-wrap border-bottom">
+                <h2>1. Tax Filling Detail </h2>
+            </div>
+            <div class="mt-3">
+                <p class="fw-bold">Type of filling <span class="text-danger">*</span></p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <mat-radio-group class="example-radio-group" [(ngModel)]="TypeFill" (change)="changeTypeItem(TypeFill)">
+                                <mat-radio-button value="0" class="me-5">
+                                    Ordinary Filling <span class="bg-dark text-white pt-1 ps-2 pe-2 rounded-circle">?</span>
+                                </mat-radio-button>
+                                <mat-radio-button value="1" class="ms-5">
+                                    Additional Filling <span class="bg-dark text-white pt-1 ps-2 pe-2 rounded-circle">?</span>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <p>VAT Month <span class="text-danger">*</span></p>
+                <div class="container">   
+                    <form [formGroup]="formTaxFill">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <mat-form-field>
+                                    <mat-label>Select Month</mat-label>
+                                    <mat-select formControlName="selectMonth" required>
+                                      <mat-option *ngFor="let item of conditionMonth" [value]="item.id">
+                                        {{item.name}}
+                                      </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="formTaxFill.controls.selectMonth.errors?.required">
+                                        Please select month!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <mat-form-field>
+                                    <mat-label>Select Year</mat-label>
+                                    <mat-select formControlName="selectYear" required>
+                                      <mat-option *ngFor="let item of years" [value]="item.year">
+                                        {{item.year}}
+                                      </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="formTaxFill.controls.selectMonth.errors?.required">
+                                        Please select year!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>                      
+                    </form>                          
+                </div>
+            </div>
+        </div>
+        
+        <div class="container my-5">
+            <div class="d-md-flex justify-content-md-between text-wrap border-bottom">
+                <h2>2. Tax Computation </h2>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="text-reset">View Exchange Rate</a>
+                </div>
+            </div>
+            <div class="mt-3">
+                <p class="fw-bold">Provide total taxable electronic service <span class="text-danger">*</span></p>
+                <div class="container">
+                    <form [formGroup]="formVatFill">
+                        <div class="d-md-flex justify-content-md-between my-1">
+                            <div class="d-flex align-items-center">
+                                <p>1. Total value of taxable eletronic service exclusive VAT</p>
+                            </div>
+                            <div class="">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <input matInput type="number" placeholder="THB" formControlName="vat" (change)="calculateVat()" required>
+                                    <mat-error *ngIf="formVatFill.controls.vat.errors?.required">
+                                        Please input taxable!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="d-md-flex justify-content-md-between my-2">
+                            <div class="d-flex align-items-center">
+                                <p>2. Total VAT to be remitted (7% of 1.)</p>
+                            </div>
+                            <div>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <input matInput type="number" placeholder="THB" 
+                                        formControlName="totalVat" 
+                                        (change)="checkCondition()" 
+                                        [readonly]="!formVatFill.controls.vat.value"
+                                        required>
+                                    <mat-error *ngIf="formVatFill.controls.totalVat.errors?.required">
+                                        {{errorMessage ? errorMessage : 'Invalid Tax!'}}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-3" *ngIf="TypeFill == '1'">
+                <p  class="fw-bold">In case of filling and payment, or additional filling</p>
+                <div class="container">
+                    <div class="d-md-flex justify-content-md-between my-1">
+                        <div class="d-flex align-items-center">
+                            <p>3. Surcharge <span class="bg-dark text-white pt-1 ps-2 pe-2 rounded-circle">?</span></p>
+                        </div>
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <input matInput type="number" placeholder="0.00THB" [(ngModel)]="surCharge" readonly>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="d-md-flex justify-content-md-between my-2">
+                        <div class="d-flex align-items-center">
+                            <p>4. Penalty <span class="bg-dark text-white pt-1 ps-2 pe-2 rounded-circle">?</span></p>
+                        </div>
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <input matInput type="number" placeholder="0.00THB" [(ngModel)]="penalty" readonly>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="d-md-flex justify-content-md-between my-2">
+                        <div>
+                            <p class="d-flex align-items-center">
+                                5. Total amount of VAT,surcharge and penality to be remitted (2 + 3 + 4)
+                            </p>
+                        </div>
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <input matInput type="number" placeholder="0.00THB" [(ngModel)]="lastTotal" readonly>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>
+</div>  

@@ -1,0 +1,83 @@
+<div class="card">
+    <div class="card-body">
+        <div class="container my-4">
+            <div class="text-wrap border-bottom">
+                <h2>Tax Filling Detail </h2>
+            </div>
+            <div class="mt-3">
+                <div class="row">
+                    <div class="col-6 col-md-2">
+                        <p class="fw-bold">Type of filling</p>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <span class="text-secondary fw-bold"> {{modelItemsDetail.fillType == '1' ? 'Ordinary' : 'Additional'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-2">
+                        <p class="fw-bold">VAT Month</p>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <span class="text-secondary fw-bold">{{checkMonth()}} {{this.modelItemsDetail.year}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="text-wrap border-bottom">
+                <h2>Tax Computation </h2>
+            </div>
+            <div class="mt-3">
+                <div class="container">
+                    <div class="row my-1">
+                        <div class="col-12 col-md-8">
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">Total value of taxable eletronic service exclusive VAT</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="me-5">
+                                <p>{{this.modelItemsDetail.saleAmount}} THB</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 col-md-8">
+                            <div class="">
+                                <label class="fw-bold">Total VAT to be remitted (7% of 1.)</label>
+                                <p>(7% of total value of taxable electronic service exclusive of VAT)</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="me-5">
+                                <p>{{this.modelItemsDetail.taxAmount}} THB</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 col-md-8">
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">Total Amount Payable</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="me-5">
+                                <p class="fw-bold">{{this.modelItemsDetail.totalAmount}} THB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="text-wrap border-bottom">
+                <h2>Declaration </h2>
+            </div>
+            <div class="mt-3">
+                <div class="container">
+                    <p>I hereby certify information given above are true and correct and agree to bound by such information</p>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
