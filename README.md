@@ -6,8 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## First
 
-1. Dowload Source code ใน Github ลงมาในเครื่อง
-2. เปิดโฟลเดอร์ Source code ที่ Dowload มาด้วยโปรแกรม visual code ถ้าภายในโปรกแกรม vs-code ที่เปิดมาไม่มี Terminal => เมนูมุมซ้ายบนจะเห็นคำว่า Terminal คลิกแล้วเลือก New Terminal แทบ Terminal จะปรากฎขึ้นมาด้านล่าง
+1. Dowload Source code ใน `Github` ลงมาในเครื่อง
+2. เปิดโฟลเดอร์ Source code ที่ Dowload มาด้วยโปรแกรม `Visual studio code` หรือ `command prompt`
+3. ถ้าภายในโปรกแกรม `Visual studio code` ที่เปิดมาไม่มี Terminal เลือกเมนูมุมซ้ายบนจะเห็นคำว่า Terminal คลิกแล้วเลือก New Terminal แทบ Terminal จะปรากฎขึ้นมาด้านล่าง
 
 ## Second
 1. ใช้คำสั่ง `npm install` ในการ install ข้อมูล Library ทั้งหมดในโปรเจค
