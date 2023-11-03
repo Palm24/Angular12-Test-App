@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2. รอจนกว่าจะ install เสร็จสิ้น
 
 ## Third
-ใช้คำสั่ง `ng serve --o` ในการ run project จะเปิด port `http://localhost:4200/` ขึ้นมาอัตโนมัติ
+1. ใช้คำสั่ง `ng serve --o` ในการ run project จะเปิด port `http://localhost:4200/` ขึ้นมาอัตโนมัติ
 
 ## Development server
 
