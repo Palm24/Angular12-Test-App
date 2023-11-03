@@ -7,6 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## First
 1. Dowload Source code ใน `Github` ลงมาในเครื่อง
 2. โดยใน `Github` คลิก `<> Code` เลือก Download ZIP
+3. แตกไฟล์ ZIP
 
 ## Second
 1. เปิดโฟลเดอร์ Source code ที่ Dowload มาด้วยโปรแกรม `Visual studio code` หรือ `command prompt`
